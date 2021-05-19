@@ -2,11 +2,15 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <nav class="flex">
+        <nav className="flex justify-between items-center  px-7 lg:px-32 h-14 border-b mb-4 ">
             <h1>Instagram</h1>
-            <input class="bg-gray-100 border-1 border-gray-300 fas fa-search" name="search" type="text" placeholder="&#xf002; Search"/>
-            <div>
-                icons
+            <input className="searchInput fas fa-search" name="search" type="text" placeholder="&#xf002; Search"/>
+            <div >
+                <a className="p-2.5" href="#home"><i className="fas fa-home"></i></a>
+                <a className="p-2.5" href="#message"><i className="far fa-comment-dots"></i></a>
+                <a className="p-2.5" href="#explore"><i className="fas fa-compass"></i></a>
+                <a className="p-2.5" href="#like"><i className="far fa-heart"></i></a>
+                <a className="p-2.5" href="#profile"><i className="fas fa-user-circle"></i></a>
             </div>
         </nav>)
 }
