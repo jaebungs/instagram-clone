@@ -1,9 +1,11 @@
 import React from 'react';
+import videojs from 'video.js'
 import soup from '../images/soup.jpg';
 import beach from '../images/soup.jpg';
 import turtle from '../images/soup.jpg';
 import computer from '../images/soup.jpg';
 import cat from '../images/soup.jpg';
+// import catVideo from '../images/cat-video.mp4';
 
 const PictureGrid = () => {
     // const images = require.context('../images');
@@ -28,6 +30,9 @@ const PictureGrid = () => {
                 console.log(image)
                 return (<img className="image" key={index} src={image} alt="alt"  width="300" height="300" />)
             })}
+            <video className="video" controls >
+                <source src="/Videos/cat-video.mp4" type="video/mp4"/>
+            </video>
             {/* <img src={require("../images/soup.jpg")} alt="" width="300" height="300" /> */}
 
             {/* {names?.map(( image, index) => {
