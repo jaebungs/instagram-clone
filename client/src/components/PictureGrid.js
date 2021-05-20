@@ -1,15 +1,19 @@
 import React from 'react';
-import videojs from 'video.js'
+import Card from './card/Card';
 import soup from '../images/soup.jpg';
 import beach from '../images/soup.jpg';
 import turtle from '../images/soup.jpg';
 import computer from '../images/soup.jpg';
 import cat from '../images/soup.jpg';
+// import catVideo from '/Videos/cat-video.mp4';
 // import catVideo from '../images/cat-video.mp4';
 
 const PictureGrid = () => {
+
+
+
     // const images = require.context('../images');
-    const images = [turtle, soup, cat,computer,beach]
+    const images = [turtle, soup, cat,computer,beach, '/Videos/cat-video.mp4']
     // get image file's name and setState
     // function importAll(r) {
     //     let images = {};
@@ -23,16 +27,12 @@ const PictureGrid = () => {
     //     setImportedImages(images)
     //   }, [])
 
-      
     return (
         <div className="imageGrid mx-auto">
             {images.map((image, index) => {
                 console.log(image)
-                return (<img className="image" key={index} src={image} alt="alt"  width="300" height="300" />)
+                return <Card key={index} content={image} />
             })}
-            <video className="video" controls >
-                <source src="/Videos/cat-video.mp4" type="video/mp4"/>
-            </video>
             {/* <img src={require("../images/soup.jpg")} alt="" width="300" height="300" /> */}
 
             {/* {names?.map(( image, index) => {

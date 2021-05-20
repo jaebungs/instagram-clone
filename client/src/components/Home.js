@@ -6,10 +6,10 @@ const Home = () => {
     return (
         <div className="App bg-gray-50" >
             <header className="App-header bg-white">
-            <Navbar />
+                <Navbar />
             </header>
             <main className="flex">
-            <PictureGrid />
+                <PictureGrid />
             </main>
         </div>
     )
