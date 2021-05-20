@@ -1,17 +1,19 @@
-import Navbar from './components/Navbar';
-import PictureGrid from './components/PictureGrid';
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
 import './App.css';
 
 function App() {
   return (
-    <div className="App bg-gray-50" >
-      <header className="App-header bg-white">
-      <Navbar />
-      </header>
-      <main className="flex">
-        <PictureGrid />
-      </main>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+    </Switch>
   );
 }
 
