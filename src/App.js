@@ -8,7 +8,7 @@ function App() {
       <header className="App-header bg-white">
       <Navbar />
       </header>
-      <main >
+      <main className="flex">
         <PictureGrid />
       </main>
     </div>

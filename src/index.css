@@ -25,4 +25,19 @@
   .searchInput {
     @apply bg-gray-100 border border-gray-300 focus:outline-none p-1 text-sm
   }
+
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 300px));
+    gap: 3%;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    padding: 0;
+    margin: 0;
+  }
 }
