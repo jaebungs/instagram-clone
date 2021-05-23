@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from './card/Card';
 import soup from '../images/soup.jpg';
-import beach from '../images/soup.jpg';
-import turtle from '../images/soup.jpg';
-import computer from '../images/soup.jpg';
-import cat from '../images/soup.jpg';
+import beach from '../images/beach.jpg';
+import turtle from '../images/turtle.jpg';
+import computer from '../images/computer.jpg';
+import cat from '../images/cat.jpg';
 // import catVideo from '/Videos/cat-video.mp4';
 // import catVideo from '../images/cat-video.mp4';
 
@@ -13,7 +13,7 @@ const PictureGrid = () => {
 
 
     // const images = require.context('../images');
-    const images = [turtle, soup, cat,computer,beach, '/Videos/cat-video.mp4']
+    const images = [turtle, soup, cat,computer, beach, turtle, soup, cat,computer, beach, '/Videos/cat-video.mp4']
     // get image file's name and setState
     // function importAll(r) {
     //     let images = {};
@@ -26,9 +26,11 @@ const PictureGrid = () => {
     //     const images = importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
     //     setImportedImages(images)
     //   }, [])
+    console.log(images)
 
     return (
         <div className="imageGrid mx-auto">
+            
             {images.map((image, index) => {
                 console.log(image)
                 return <Card key={index} content={image} />

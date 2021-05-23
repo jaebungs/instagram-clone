@@ -11,7 +11,6 @@ const Card = ({ content }) => {
     const handleModalClose = (e) => {
         setIsModalOpen(false);
     }
-
     return (
         <article>
             {content.includes('mp4') ? (
