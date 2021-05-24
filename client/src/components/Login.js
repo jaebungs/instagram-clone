@@ -27,8 +27,7 @@ const Login = () => {
       body: JSON.stringify(loginInput),
     })
       .then((res) => {
-        res.json();
-        console.log(res.json());
+          console.log(res)
       })
       .then((data) => {
           console.log(data);

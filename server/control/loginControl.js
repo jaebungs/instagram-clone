@@ -1,13 +1,17 @@
 import AppError from '../common/AppError';
 import TestUser from '../model/testUser.js';
 import * as loginService from '../service/loginService';
+import bycrypt from 'bcryptjs';
 
 export const loginOAuth = async (req, res, next) => {
     try {
         console.log('login', req.body)
         const { email, password } = req.body;
         const account = await loginService.getUserByEmail(email)
-        if (!account) throw new AppError('User not exists')
+        if (!account) throw new AppError('User not exists.')
+        
+        const isPasswordCorrect = await bycrypt.compare(password, account.password);
+        if (!isPasswordCorrect) throw new AppError('Password incorrect.')
         res.json(account)
 
     } catch (err) {
@@ -22,6 +26,7 @@ export const logoutOAuth = async (req, res, next) => [
 export const createNewUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
+        const encryptPWD = bycrypt.hashSync(password, 10)
 
         const account = await loginService.getUserByEmail(email);
         // cannot make a new account, account already exist.
@@ -31,7 +36,7 @@ export const createNewUser = async (req, res, next) => {
 
         // can make a new account.
         if (!account) {
-            const newAccount = await loginService.createNewUser({email, password})
+            const newAccount = await loginService.createNewUser({email, password: encryptPWD})
             res.json(newAccount)
         }
 
