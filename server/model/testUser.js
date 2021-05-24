@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const testUser = new mongoose.Schema({
     email: String,
     password: String
-});
+}, {
+    timestamps: true,
+  });
 
-export default('TestUser', testUser)
+const TestUser = mongoose.model('TestUser', testUser);
+export default TestUser;
+

@@ -9,13 +9,12 @@ import bycrypt from 'bcryptjs';
 import session from 'express-session';
 import router from './loginRoutes.js';
 
-const app = express();
-
 dotenv.config()
+const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
     secret: process.env.SECRET,
@@ -25,6 +24,7 @@ app.use(session({
 
 app.use(cookieParser(process.env.SECRET))
 
+// Routes
 app.use('/user', router);
 
 // Error handling 
