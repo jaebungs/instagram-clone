@@ -10,7 +10,8 @@ const Success = () => {
     }
     return (
         <div className="p-28 m-28 text-xl">
-            Login succeed.
+            <h2>Login succeed.</h2>
+            <h3>Check the console to see the User information.</h3>
             <div className="flex flex-col justify-center items-center">
                 <button className="border m-3 p-3">Log out</button>
                 <button className="border m-3 p-3" onClick={routeToHome}>Go to Home</button>

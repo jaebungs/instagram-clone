@@ -1,7 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 
+const loginInputDefault = {
+    email: '',
+    password: ''
+}
+
 const Login = () => {
+
+    const [loginInput, setLoginInput] = useState(loginInputDefault);
+    const [registerInput, setRegisterInput] = useState(loginInputDefault);
+
+    const inputChange = (e) => {
+        setLoginInput({...loginInput, [e.target.name]: e.target.value})
+    }
+
+    const registerChange = (e) => {
+        setRegisterInput({ ...registerInput, [e.target.name]: e.target.value })
+    }
+
+    const loginFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('submitted')
+        fetch(process.env.REACT_APP_LOGIN_API, {
+            method: 'post',
+            headers: { 'Content-type': 'application/json'},
+            body: JSON.stringify(loginInput)
+        })
+        .then(res => {
+            res.json();
+            console.log(res.json())
+
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }
+
+    const registerUserSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <>
             <header>
@@ -9,7 +47,7 @@ const Login = () => {
             </header>
             <main className="h-full flex justify-center items-center md:mt-28">
                 <div className="flex flex-col text-xl" >
-                    <form className="flex flex-col border py-7 px-28" >
+                    <form className="flex flex-col border py-7 px-28" onChange={(e)=>inputChange(e)} onSubmit={(e)=>loginFormSubmit(e)}>
                         <label htmlFor="email">Email:</label>
                         <input className="login-input" type="email" id="email" name="email" placeholder="Enter ID(eamil) here."/>
                         
@@ -23,6 +61,18 @@ const Login = () => {
                         <button className="login-button hover:bg-lightBlue-400 hover:text-white">Google</button>
                         <button className="login-button hover:bg-lightBlue-400 hover:text-white">Github</button>
                         <button className="login-button hover:bg-lightBlue-400 hover:text-white">Facebook</button>
+                    </div>
+                    <div>
+                        <p>Create new account.</p>
+                        <form className="flex flex-col border py-7 px-28" onChange={(e)=>registerChange(e)} onSubmit={(e)=>registerUserSubmit(e)}>
+                            <label htmlFor="email">New email:</label>
+                            <input className="login-input" type="email" id="email" name="email" placeholder="Enter ID(eamil) here."/>
+                            
+                            <label htmlFor="password">New password:</label>
+                            <input className="login-input" type="password" id="password" name="password" placeholder="Enter password here."/>
+                            
+                            <button className="border py-1 px-1 mb-4 hover:bg-lightBlue-400 hover:text-white" >Create account</button>
+                        </form>
                     </div>
                 </div>
 
