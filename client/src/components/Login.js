@@ -20,18 +20,16 @@ const Login = () => {
 
   const loginFormSubmit = (e) => {
     e.preventDefault();
-    console.log('submitted');
+    console.log('login form fire')
     fetch(process.env.REACT_APP_LOGIN_API, {
       method: 'post',
-      headers: {'Content-type': 'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(loginInput),
     })
-      .then((res) => {
-          console.log(res)
-      })
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
+          setLoginInput(loginInputDefault);
           console.log(data);
-          setLoginInput(loginInputDefault)
       })
       .catch((err) => console.log(err));
   };
@@ -40,10 +38,10 @@ const Login = () => {
     e.preventDefault();
     fetch(process.env.REACT_APP_REGISTER_API, {
       method: 'post',
-      headers: {'content-type': 'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(registerInput),
     })
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((data) => {
         console.log(data);
         setRegisterInput(loginInputDefault)

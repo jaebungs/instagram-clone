@@ -5,15 +5,13 @@ import bycrypt from 'bcryptjs';
 
 export const loginOAuth = async (req, res, next) => {
     try {
-        console.log('login', req.body)
         const { email, password } = req.body;
         const account = await loginService.getUserByEmail(email)
         if (!account) throw new AppError('User not exists.')
         
         const isPasswordCorrect = await bycrypt.compare(password, account.password);
         if (!isPasswordCorrect) throw new AppError('Password incorrect.')
-        res.json(account)
-
+        res.json(account);
     } catch (err) {
         next(err)
     }
@@ -37,9 +35,8 @@ export const createNewUser = async (req, res, next) => {
         // can make a new account.
         if (!account) {
             const newAccount = await loginService.createNewUser({email, password: encryptPWD})
-            res.json(newAccount)
+            res.json(newAccount);-+[]
         }
-
     } catch (err) {
         next(err)
     }

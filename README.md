@@ -3,9 +3,8 @@
 - TailwindCSS
 - Video.js
 - Responsive images and vidoes rendering. 
-- Login with passpost.
+- Passport.js
 
-### How to use.
 ##### Starting server - cd server, npm run start
 ##### Starting client - cd client, npm run start
 
